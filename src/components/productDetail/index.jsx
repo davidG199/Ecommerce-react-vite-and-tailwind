@@ -23,7 +23,7 @@ const ProductDetail = () => {
       </div>
       <figure className='px-6'>
         <img className='w-full h-full rounded-lg'
-        src={images[0]}
+        src={images}
         alt={title} />
       </figure>
       <p className='flex flex-col p-6'>
