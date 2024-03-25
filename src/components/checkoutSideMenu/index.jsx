@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { ShoppingCartContext } from '../../context';
+import { totalPrice } from '../../utils';
 import OrderCard from '../orderCard';
 
 const CheckoutSideMenu = () => {
@@ -42,6 +43,12 @@ const CheckoutSideMenu = () => {
             handleDelete={handleDelete}
           />
         ))}
+      </div>
+      <div className='px-6 py-4'>
+          <p className='flex justify-between items-center'>
+            <span className=' font-light'>Total</span>
+            <span className='font-medium text-xl'>${totalPrice(context.cartProducts)}</span>
+          </p>
       </div>
     </aside>
   );
