@@ -18,15 +18,15 @@ const Navbar = () => {
             Shopi
           </NavLink>
         </li>
-        <li>
+        <li className=' hover:border-b border-black'>
           <NavLink 
           to="/"
           className={({ isActive }) => isActive ? activeStyle : undefined
-            }>
+            } >
             All
             </NavLink>
         </li>
-        <li>
+        <li className=' hover:border-b border-black'>
           <NavLink 
           to="/clothes"
           className={({ isActive }) => isActive ? activeStyle : undefined
@@ -34,7 +34,7 @@ const Navbar = () => {
             Clothes
             </NavLink>
         </li>
-        <li>
+        <li className=' hover:border-b border-black'>
           <NavLink 
           to="/electronics"
           className={({ isActive }) => isActive ? activeStyle : undefined
@@ -42,7 +42,7 @@ const Navbar = () => {
             Electronics
             </NavLink>
         </li>
-        <li>
+        <li className=' hover:border-b border-black'>
           <NavLink 
           to="/furnitures"
           className={({ isActive }) => isActive ? activeStyle : undefined
@@ -50,7 +50,7 @@ const Navbar = () => {
             Furnitures
             </NavLink>
         </li>
-        <li>
+        <li className=' hover:border-b border-black'>
           <NavLink 
           to="/toys"
           className={({ isActive }) => isActive ? activeStyle : undefined
@@ -58,7 +58,7 @@ const Navbar = () => {
             Toys
             </NavLink>
         </li>
-        <li>
+        <li className=' hover:border-b border-black'>
           <NavLink 
           to="/others"
           className={({ isActive }) => isActive ? activeStyle : undefined
@@ -70,7 +70,7 @@ const Navbar = () => {
       
       <ul className="flex items-center gap-3">
         <li className=" text-black/60">oetodo@cesde.net</li>
-        <li>
+        <li className=' hover:border-b border-black'>
           <NavLink 
           to="/my-orders"
           className={({ isActive }) => isActive ? activeStyle : undefined
@@ -78,7 +78,7 @@ const Navbar = () => {
             My orders
             </NavLink>
         </li>
-        <li>
+        <li className=' hover:border-b border-black'>
           <NavLink 
           to="/my-account"
           className={({ isActive }) => isActive ? activeStyle : undefined
@@ -86,7 +86,7 @@ const Navbar = () => {
             My account
             </NavLink>
         </li>
-        <li>
+        <li className=' hover:border-b border-black'>
           <NavLink 
           to="/signIn"
           className={({ isActive }) => isActive ? activeStyle : undefined
