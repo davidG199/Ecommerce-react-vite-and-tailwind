@@ -1,54 +1,64 @@
-import { createContext, useState } from 'react'
+import { createContext, useState } from "react";
 
-export const ShoppingCartContext = createContext()
+export const ShoppingCartContext = createContext();
 
-export const ShoppingCartProvider = ({children}) =>{
-    //Shopping Cart .. increment quantity
-    const [count, setCount] = useState(0)
-    
-    //Product detail .. OPen / close
-    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
-    const openProductDetail = () => setIsProductDetailOpen(true)
-    const closeProductDetail = () => setIsProductDetailOpen(false)
+export const ShoppingCartProvider = ({ children }) => {
+  //Shopping Cart .. increment quantity
+  const [count, setCount] = useState(0);
 
-    //Checkout side menu .. Open / close
-    const [isCheckoutSideMenu, setIsCheckoutSideMenu] = useState(false)
-    const openCheckoutSideMenu = () => setIsCheckoutSideMenu(true)
-    const closeCheckoutSideMenu = () => setIsCheckoutSideMenu(false)
-    
-    //Product detail .. show product
-    const [productToShow, setProductToShow] = useState({
-        title: "",
-        price: "",
-        description: "",
-        images: [],
-    })
+  //Product detail .. OPen / close
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
 
-    //shopping Cart .. add products to cart
-    const [cartProducts, setCartProducts] = useState([])
+  //Checkout side menu .. Open / close
+  const [isCheckoutSideMenu, setIsCheckoutSideMenu] = useState(false);
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenu(true);
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenu(false);
 
-    //SHopping cart - Order
-    const [order, setOrder] = useState([])
+  //Product detail .. show product
+  const [productToShow, setProductToShow] = useState({
+    title: "",
+    price: "",
+    description: "",
+    images: [],
+  });
 
-    return (
+  //shopping Cart .. add products to cart
+  const [cartProducts, setCartProducts] = useState([]);
 
-        <ShoppingCartContext.Provider value={{
-            count,
-            setCount,
-            openProductDetail,
-            closeProductDetail,
-            isProductDetailOpen,
-            productToShow,
-            setProductToShow,
-            cartProducts,
-            setCartProducts,
-            isCheckoutSideMenu,
-            openCheckoutSideMenu,
-            closeCheckoutSideMenu,
-            order,
-            setOrder
-        }}>
-            {children}
-        </ShoppingCartContext.Provider>
-    )
-}
+  //SHopping cart - Order
+  const [order, setOrder] = useState([]);
+
+  //get products
+  const [items, setItems] = useState(null);
+
+  useEffect(() => {
+    fetch("https://api.escuelajs.co/api/v1/products")
+      .then((response) => response.json())
+      .then((data) => setItems(data.slice(0, 28)));
+  }, []);
+
+  return (
+    <ShoppingCartContext.Provider
+      value={{
+        count,
+        setCount,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow,
+        cartProducts,
+        setCartProducts,
+        isCheckoutSideMenu,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
+        order,
+        setOrder,
+      }}
+    >
+      {children}
+    </ShoppingCartContext.Provider>
+  );
+};
