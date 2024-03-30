@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect} from "react";
 
 export const ShoppingCartContext = createContext();
 
@@ -56,6 +56,8 @@ export const ShoppingCartProvider = ({ children }) => {
         closeCheckoutSideMenu,
         order,
         setOrder,
+        items,
+        setItems
       }}
     >
       {children}
