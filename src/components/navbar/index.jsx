@@ -1,7 +1,7 @@
 import {ShoppingCartIcon} from '@heroicons/react/24/outline'
-import { NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { ShoppingCartContext } from "../../context";
+import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { ShoppingCartContext } from '../../context';
 
 
 const Navbar = () => {
@@ -9,18 +9,19 @@ const Navbar = () => {
   const activeStyle = 'underline underline-offset-4'
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light top-0 bg-slate-100 opacity-95">
-      <ul className="flex items-center gap-3">
-        <li className="font-semibold text-lg">
+    <nav className='flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light top-0 bg-slate-100 opacity-95'>
+      <ul className='flex items-center gap-3'>
+        <li className='font-semibold text-lg'>
           <NavLink
-            to="/"
+            to='/'
             >
             Shopi
           </NavLink>
         </li>
         <li className=' hover:border-b border-black'>
           <NavLink 
-          to="/"
+          to='/'
+          onClick={() => context.setSearchByCategory()}
           className={({ isActive }) => isActive ? activeStyle : undefined
             } >
             All
@@ -28,7 +29,8 @@ const Navbar = () => {
         </li>
         <li className=' hover:border-b border-black'>
           <NavLink 
-          to="/clothes"
+          to='/clothes'
+          onClick={() => context.setSearchByCategory('clothes')}
           className={({ isActive }) => isActive ? activeStyle : undefined
             }>
             Clothes
@@ -36,7 +38,8 @@ const Navbar = () => {
         </li>
         <li className=' hover:border-b border-black'>
           <NavLink 
-          to="/electronics"
+          to='/electronics'
+          onClick={() => context.setSearchByCategory('electronics')}
           className={({ isActive }) => isActive ? activeStyle : undefined
             }>
             Electronics
@@ -44,7 +47,8 @@ const Navbar = () => {
         </li>
         <li className=' hover:border-b border-black'>
           <NavLink 
-          to="/furnitures"
+          to='/furnitures'
+          onClick={() => context.setSearchByCategory('furnitures')}
           className={({ isActive }) => isActive ? activeStyle : undefined
             }>
             Furnitures
@@ -52,7 +56,8 @@ const Navbar = () => {
         </li>
         <li className=' hover:border-b border-black'>
           <NavLink 
-          to="/toys"
+          to='/toys'
+          onClick={() => context.setSearchByCategory('toys')}
           className={({ isActive }) => isActive ? activeStyle : undefined
             }>
             Toys
@@ -60,7 +65,8 @@ const Navbar = () => {
         </li>
         <li className=' hover:border-b border-black'>
           <NavLink 
-          to="/others"
+          to='/others'
+          onClick={() => context.setSearchByCategory('others')}
           className={({ isActive }) => isActive ? activeStyle : undefined
             }>
             Others
@@ -68,11 +74,11 @@ const Navbar = () => {
         </li>
       </ul>
       
-      <ul className="flex items-center gap-3">
-        <li className=" text-black/60">oetodo@cesde.net</li>
+      <ul className='flex items-center gap-3'>
+        <li className=' text-black/60'>oetodo@cesde.net</li>
         <li className=' hover:border-b border-black'>
           <NavLink 
-          to="/my-orders"
+          to='/my-orders'
           className={({ isActive }) => isActive ? activeStyle : undefined
             }>
             My orders
@@ -80,7 +86,7 @@ const Navbar = () => {
         </li>
         <li className=' hover:border-b border-black'>
           <NavLink 
-          to="/my-account"
+          to='/my-account'
           className={({ isActive }) => isActive ? activeStyle : undefined
             }>
             My account
@@ -88,15 +94,15 @@ const Navbar = () => {
         </li>
         <li className=' hover:border-b border-black'>
           <NavLink 
-          to="/signIn"
+          to='/signIn'
           className={({ isActive }) => isActive ? activeStyle : undefined
             }>
             Sign in
             </NavLink>
         </li>
-        <li className="flex justify-center items-center">
+        <li className='flex justify-center items-center'>
           <ShoppingCartIcon
-          className="h-6 w-6 me-1"
+          className='h-6 w-6 me-1'
           />
             {context.count}
         </li>
