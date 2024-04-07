@@ -32,8 +32,6 @@ export const ShoppingCartProvider = ({ children }) => {
 
   //get products
   const [items, setItems] = useState(null);
-
-  //get products by title
   const [filteredItems, setFilteredItems] = useState(null);
 
   //get products by title
@@ -42,10 +40,21 @@ export const ShoppingCartProvider = ({ children }) => {
   //get products by category
   const [searchByCategory, setSearchByCategory] = useState(null);
 
+  //initial page load
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
+    setIsLoading(true) //start charging
     fetch("https://api.escuelajs.co/api/v1/products")
       .then((response) => response.json())
-      .then((data) => setItems(data.slice(0, 28)));
+      .then((data) => {
+        setItems(data);
+        setIsLoading(false); // charging ends
+      })
+      .catch((error) => {
+        console.error('error fetching', error);
+        setIsLoading(false)
+      })
   }, []);
 
   const filteredItemsByTitle = (items, searchByTitle) => {
@@ -60,21 +69,22 @@ export const ShoppingCartProvider = ({ children }) => {
   };
 
   const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
-    if (searchType == "BY_TITLE") {
+    if (searchType === "BY_TITLE") {
       return filteredItemsByTitle(items, searchByTitle);
     }
-    if (searchType == "BY_CATEGORY") {
+    if (searchType === "BY_CATEGORY") {
       return filteredItemsByCategory(items, searchByCategory);
     }
-    if (searchType == "BY_TITLE_AND_CATEGORY") {
+    if (searchType === "BY_TITLE_AND_CATEGORY") {
       return filteredItemsByCategory(items, searchByCategory).filter((item) =>
-      item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+        item.title.toLowerCase().includes(searchByTitle.toLowerCase())
       );
     }
     if (!searchType) {
-      return items
+      return items;
     }
   };
+  console.log(filteredItems);
 
   useEffect(() => {
     if (searchByTitle && searchByCategory)
@@ -123,6 +133,8 @@ export const ShoppingCartProvider = ({ children }) => {
         setFilteredItems,
         searchByCategory,
         setSearchByCategory,
+        isLoading,
+        setIsLoading
       }}
     >
       {children}

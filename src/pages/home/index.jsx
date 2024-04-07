@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import Card from "../../components/card";
 import Layout from "../../components/layout";
 import ProductDetail from "../../components/productDetail";
@@ -9,21 +9,36 @@ function Home() {
 
   //Renderiza los productos filtrados
   const RenderView = () => {
-    if (context.searchByTitle?.length > 0) {
-      if (context.filteredItems?.length > 0) {
-        return context.filteredItems?.map((item) => (
-          <Card key={item.id} data={item} />
-        ));
-      } else {
-        return <div>We don't have anything :</div>;
-      }
-    } else {
-      return (
-        context.filteredItems?.map(item => (
-          <Card key={item.id} data={item} />
-        ))
-      )
+    if(context.isLoading){
+      return <div>Cargando..</div> //agregar animacion de carga
     }
+
+    let itemsToRender = context.filteredItems
+
+    if (context.searchByCategory) {
+      itemsToRender = itemsToRender.filter(
+        item => item.category.name.toLowerCase() === context.searchByCategory.toLowerCase()
+      );
+    }else if (context.searchByCategory === 'others') {
+      // Filtrar productos que no pertenecen a ninguna categoría seleccionada
+      itemsToRender = itemsToRender.filter(
+        item => !['clothes', 'electronics', 'furnitures', 'shoes'].includes(item.category.name.toLowerCase())
+      );
+    }
+    if (itemsToRender?.length > 0) {
+      return itemsToRender.map(item => <Card key={item.id} data={item} />);
+    } else {
+      return <div>No hay productos disponibles.</div>;
+    }
+    
+
+      // if (context.filteredItems?.length > 0) {
+      //   return context.filteredItems?.map((item) => (
+      //     <Card key={item.id} data={item} />
+      //   ));
+      // } else {
+      //   return <div>We don't have anything :</div>;
+      // }
   };
 
   return (
