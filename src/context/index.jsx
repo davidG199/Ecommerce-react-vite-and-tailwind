@@ -58,6 +58,8 @@ export const ShoppingCartProvider = ({ children }) => {
       })
   }, []);
 
+
+  //filter products
   const filteredItemsByTitle = (items, searchByTitle) => {
     return items?.filter((item) =>
       item.title.toLowerCase().includes(searchByTitle.toLowerCase())
@@ -135,7 +137,7 @@ export const ShoppingCartProvider = ({ children }) => {
         searchByCategory,
         setSearchByCategory,
         isLoading,
-        setIsLoading
+        setIsLoading,
       }}
     >
       {children}

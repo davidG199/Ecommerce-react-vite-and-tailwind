@@ -32,12 +32,7 @@ function Home() {
           context.searchByCategory.toLowerCase()
       );
     }
-    // else if (context.searchByCategory === 'others') {
-    //   // Filtrar productos que no pertenecen a ninguna categoría seleccionada
-    //   itemsToRender = itemsToRender.filter(
-    //     item => !['clothes', 'electronics', 'furnitures', 'shoes'].includes(item.category.name.toLowerCase())
-    //   );
-    // }
+    
     if (itemsToRender?.length > 0) {
       return itemsToRender.map((item) => <Card key={item.id} data={item} />);
     } else {
@@ -56,7 +51,7 @@ function Home() {
         className="rounded-lg border border-black w-80 p-3 mb-4"
         onChange={(event) => context.setSearchByTitle(event.target.value)}
       />
-      <div className="grid place-items-center gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-x border-white max-w-screen-lg mb-20">
+      <div className="grid place-items-center gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-x border-white max-w-screen-lg mb-20 mt-5">
         {RenderView()}
       </div>
       <ProductDetail />
