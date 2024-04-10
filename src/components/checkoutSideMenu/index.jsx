@@ -34,9 +34,9 @@ const CheckoutSideMenu = () => {
     <aside
       className={`${
         context.isCheckoutSideMenu ? "flex" : "hidden"
-      } w-[450px] max-h-[calc(100vh-80px)] flex-col fixed right-0 border border-black bg-white rounded-lg top-20`}
+      } w-[450px] max-h-[calc(100vh-60px)] flex-col fixed right-0 border border-black bg-white top-[68px]`}
     >
-      <div className="flex justify-between items-center p-6">
+      <div className="flex justify-between items-center p-6 ">
         <h2 className=" font-medium text-xl">My order</h2>
         <div>
           <XMarkIcon
@@ -50,7 +50,7 @@ const CheckoutSideMenu = () => {
       [&::-webkit-scrollbar-track]:rounded-full
       [&::-webkit-scrollbar-track]:bg-gray-100
       [&::-webkit-scrollbar-thumb]:rounded-full
-      [&::-webkit-scrollbar-thumb]:bg-gray-300'
+      [&::-webkit-scrollbar-thumb]:bg-gray-300 '
       >
         {context.cartProducts.map((product) => (
           <OrderCard
@@ -64,16 +64,16 @@ const CheckoutSideMenu = () => {
         ))}
       </div>
       <div className="px-6 py-4">
-        <p className="flex justify-between items-center pb-4">
-          <span className=" font-light">Total</span>
-          <span className="font-medium text-xl">
+        <p className="flex justify-between items-center pb-4 pt-2 border-t font-medium">
+          <span className=" text-lg  ">Total:</span>
+          <span className=" text-xl">
             ${totalPrice(context.cartProducts)}
           </span>
         </p>
         <Link to='/my-orders/last'>
         <button 
         onClick={() => handleCheckout()}
-        className='bg-black text-white w-full rounded-lg py-3'
+        className=' bg-neutral-950 text-white w-full rounded-lg py-3 hover:bg-neutral-900'
         >
           Checkout
         </button>

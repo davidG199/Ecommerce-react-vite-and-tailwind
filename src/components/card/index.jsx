@@ -46,23 +46,23 @@ const Card = (data) => {
   }
   return (
     <div
-      className=' bg-slate-100 cursor-pointer w-56 h-60 rounded-lg shadow-lg'
+      className=' bg-gray-50 cursor-pointer w-72 h-80 md:w-60 md:h-70 rounded-lg shadow-lg '
       onClick={() => showProduct(data.data)}
     >
-      <figure className='relative mb-2 w-full h-4/5'>
-        <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>
+      <figure className='relative w-full h-4/5'>
+        <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 font-semibold'>
           {data.data.category.name}
         </span>
         <img
-          className='w-full h-full object-cover rounded-lg'
+          className='w-full h-full object-cover rounded-t-lg'
           src={data.data.images[0]}
           alt={data.data.title}
         />
         {renderIcon(data.data.id)}        
       </figure>
-      <span className='flex justify-between ps-2'>
+      <span className='flex justify-between px-4 md:px-3 items-center h-1/5'>
         <span className='text-sm font-light'>{data.data.title}</span>
-        <span className='text-lg font-medium'>${data.data.price}</span>
+        <span className='text-lg font-medium ms-3 md:ms-2'>${data.data.price}</span>
       </span>
     </div>
   );

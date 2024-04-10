@@ -4,7 +4,7 @@ function SignIn() {
 
     return (
       
-      <Layout>SignIn</Layout>  
+      <Layout>Sign In</Layout>  
       
     )
   }

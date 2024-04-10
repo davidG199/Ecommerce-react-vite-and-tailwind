@@ -17,13 +17,13 @@ const AppRoutes = () => (
     <Route path="/electronics" element={<Home title="Electronics" />} />
     <Route path="/furnitures" element={<Home title="Furniture" />} />
     <Route path="/shoes" element={<Home title="Shoes" />} />
-    <Route path="/others" element={<Home title="Others" />} />
+    <Route path="/miscellaneous" element={<Home title="Miscellaneous" />} />
     <Route path="/my-account" element={<MyAccount />} />
     <Route path="/my-order" element={<MyOrder />} />
     <Route path="/my-orders/last" element={<MyOrder />} />
     <Route path="/my-orders/:id" element={<MyOrder />} />
     <Route path="/my-orders" element={<MyOrders />} />
-    <Route path="/sign-in" element={<SignIn />} />
+    <Route path="/signIn" element={<SignIn />} />
     <Route path="/*" element={<NotFound />} />
   </Routes>
 );

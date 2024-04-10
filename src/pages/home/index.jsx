@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import Card from "../../components/card";
 import Layout from "../../components/layout";
 import ProductDetail from "../../components/productDetail";
@@ -9,36 +9,40 @@ function Home() {
 
   //Renderiza los productos filtrados
   const RenderView = () => {
-    if(context.isLoading){
-      return <div>Cargando..</div> //agregar animacion de carga
+    if (context.isLoading) {
+      //skeleeton load
+      return (
+        <div className=" flex absolute top-80">
+          <div className="flex items-center justify-center">
+            <div
+              className="w-8 h-8 border-4 border-blue-200 rounded-full animate-spin"
+            ></div>
+            <p className="ml-2">cargando...</p>
+          </div>
+        </div>
+      );
     }
 
-    let itemsToRender = context.filteredItems
+    let itemsToRender = context.filteredItems;
 
     if (context.searchByCategory) {
       itemsToRender = itemsToRender.filter(
-        item => item.category.name.toLowerCase() === context.searchByCategory.toLowerCase()
-      );
-    }else if (context.searchByCategory === 'others') {
-      // Filtrar productos que no pertenecen a ninguna categoría seleccionada
-      itemsToRender = itemsToRender.filter(
-        item => !['clothes', 'electronics', 'furnitures', 'shoes'].includes(item.category.name.toLowerCase())
+        (item) =>
+          item.category.name.toLowerCase() ===
+          context.searchByCategory.toLowerCase()
       );
     }
+    // else if (context.searchByCategory === 'others') {
+    //   // Filtrar productos que no pertenecen a ninguna categoría seleccionada
+    //   itemsToRender = itemsToRender.filter(
+    //     item => !['clothes', 'electronics', 'furnitures', 'shoes'].includes(item.category.name.toLowerCase())
+    //   );
+    // }
     if (itemsToRender?.length > 0) {
-      return itemsToRender.map(item => <Card key={item.id} data={item} />);
+      return itemsToRender.map((item) => <Card key={item.id} data={item} />);
     } else {
       return <div>No hay productos disponibles.</div>;
     }
-    
-
-      // if (context.filteredItems?.length > 0) {
-      //   return context.filteredItems?.map((item) => (
-      //     <Card key={item.id} data={item} />
-      //   ));
-      // } else {
-      //   return <div>We don't have anything :</div>;
-      // }
   };
 
   return (
@@ -52,7 +56,7 @@ function Home() {
         className="rounded-lg border border-black w-80 p-3 mb-4"
         onChange={(event) => context.setSearchByTitle(event.target.value)}
       />
-      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg place-items-center mb-20">
+      <div className="grid place-items-center gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-x border-white max-w-screen-lg mb-20">
         {RenderView()}
       </div>
       <ProductDetail />

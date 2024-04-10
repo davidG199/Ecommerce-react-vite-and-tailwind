@@ -1,48 +1,48 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { ChevronLeftIcon } from '@heroicons/react/24/solid';
-import { ShoppingCartContext } from '../../context';
-import OrderCard from '../../components/orderCard';
-import Layout from '../../components/layout';
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
+import { ShoppingCartContext } from "../../context";
+import OrderCard from "../../components/orderCard";
+import Layout from "../../components/layout";
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext);
-  const currentPath = window.location.pathname
-  let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
+  const currentPath = window.location.pathname;
+  let index = currentPath.substring(currentPath.lastIndexOf("/") + 1);
 
-  // console.log(context.order)
-  // console.log(index);
-  if(index === 'last') index = context.order?.length - 1
-  // const products = context.order && context.order[index] ? context.order[index].products : [];
-
+  if (index === "last") index = context.order?.length - 1;
 
   return (
     <Layout>
-      <div className='flex items-center w-80 relative justify-center mb-6'>
-        <Link to='/my-orders' className='absolute left-0'>
-          <ChevronLeftIcon className='h-6 w-6 text-black cursor-pointer' />
+      <div className="flex items-center w-80 relative justify-center mb-6">
+        <Link to="/my-orders" className="absolute left-0">
+          <ChevronLeftIcon className="h-6 w-6 text-black cursor-pointer" />
         </Link>
-        <h1>My Order</h1>
+        <h1 className='font-medium'>My Order</h1>
       </div>
-      <div className='flex flex-col w-80'>
-      {
-          context.order?.[index]?.products.map(product => (
-            <OrderCard
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              imageUrl={product.images}
-              price={product.price}
-            />
-          ))
-        }
+      <div className="flex flex-col w-80 justify-center">
+        {context.order?.[index]?.products.map((product) => (
+          <OrderCard
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            imageUrl={product.images}
+            price={product.price}
+          />
+        ))}
       </div>
-      <div className='flex w-80 mt-4 '>
-        <p className='flex w-full items-center justify-between'>
-          <span className='font-normal text-xl'>Total: </span>
-          <span className='font-medium text-2xl pr-2'>${context.order && context.order[index] ? context.order[index].totalPrice : 0}</span>
+      <div className="flex w-80 mt-2 ">
+        <p className="flex w-full items-center justify-between border-t pt-4">
+          <span className="font-normal text-xl">Total: </span>
+          <span className="font-medium text-2xl pr-2">
+            $
+            {context.order && context.order[index]
+              ? context.order[index].totalPrice
+              : 0}
+          </span>
         </p>
-      </div>    </Layout>
+      </div>{" "}
+    </Layout>
   );
 }
 

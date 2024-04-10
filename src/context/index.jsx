@@ -44,6 +44,7 @@ export const ShoppingCartProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    
     setIsLoading(true) //start charging
     fetch("https://api.escuelajs.co/api/v1/products")
       .then((response) => response.json())
@@ -84,7 +85,7 @@ export const ShoppingCartProvider = ({ children }) => {
       return items;
     }
   };
-  console.log(filteredItems);
+  // console.log(filteredItems);
 
   useEffect(() => {
     if (searchByTitle && searchByCategory)
