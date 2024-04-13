@@ -1,20 +1,21 @@
-import { Route,BrowserRouter, Routes } from 'react-router-dom' 
-import { ShoppingCartProvider } from '../../context'
-import MyOrder from '../myOrder'
-import MyOrders from '../myOrders'
-import NotFound from '../notFound'
-import SignIn from '../signIn'
-import MyAccount from '../myAccount'
-import Home from '../home'
-import Navbar from '../../components/navbar'
-import CheckoutSideMenu from '../../components/checkoutSideMenu'
-import Footer from '../../components/Footer/Footer'
-import '../../assets/App.css'
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { ShoppingCartProvider } from "../../context";
+import MyOrder from "../myOrder";
+import MyOrders from "../myOrders";
+import NotFound from "../notFound";
+import SignIn from "../signIn";
+import MyAccount from "../myAccount";
+import Home from "../home";
+import Navbar from "../../components/navbar";
+import CheckoutSideMenu from "../../components/checkoutSideMenu";
+import Footer from "../../components/Footer/Footer";
+import "../../assets/App.css";
+import Layout from "../../components/layout";
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" element={<Home title={null}/>} />
-    <Route path="/clothes" element={<Home title="Clothes"/>} />
+    <Route path="/" element={<Home title={null} />} />
+    <Route path="/clothes" element={<Home title="Clothes" />} />
     <Route path="/electronics" element={<Home title="Electronics" />} />
     <Route path="/furnitures" element={<Home title="Furniture" />} />
     <Route path="/shoes" element={<Home title="Shoes" />} />
@@ -29,18 +30,19 @@ const AppRoutes = () => (
   </Routes>
 );
 
-
 const App = () => {
   return (
     <ShoppingCartProvider>
-    <BrowserRouter>
-      <AppRoutes/>
-      <Navbar/>
-      <CheckoutSideMenu/>
-      <Footer/>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Layout>
+          <AppRoutes />
+          <Navbar />
+          <CheckoutSideMenu />
+        </Layout>
+        <Footer />
+      </BrowserRouter>
     </ShoppingCartProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

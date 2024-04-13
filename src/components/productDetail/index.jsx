@@ -7,15 +7,17 @@ const ProductDetail = () => {
   const { images, title, price, description } = { ...context.productToShow };
 
   return (
+    <div>
+      {context.isProductDetailOpen && (
+        <div className='fixed inset-0 bg-black bg-opacity-50 -z-1'></div>
+      )}
+    
     <aside
       className={`${
         context.isProductDetailOpen ? "flex" : "hidden"
-      } w-[360px] h-[calc(100vh-60px)] flex-col fixed right-0 top-[68px] bg-gray-50 rounded-lg`}
+      } w-[360px] h-[calc(100vh-60px)] flex-col fixed right-0 top-[68px] bg-gray-50 rounded-lg z-10`}
     >
-      {/* <div className='flex justify-between items-center px-6 py-3'>
-        <h2 className=' font-medium text-xl'>Details</h2>
-        
-      </div> */}
+      
       <figure className=" w-full h-96 relative">
         <img className="aspect-video h-full" src={images} alt={title} />
         <div>
@@ -39,7 +41,8 @@ const ProductDetail = () => {
         <span className="font-light text-sm">{description}</span>
       </div>
     </aside>
-  );
+    </div>
+  )
 };
 
 export default ProductDetail;
