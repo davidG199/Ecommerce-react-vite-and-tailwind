@@ -9,8 +9,9 @@ import Home from "../home";
 import Navbar from "../../components/navbar";
 import CheckoutSideMenu from "../../components/checkoutSideMenu";
 import Footer from "../../components/Footer/Footer";
-import "../../assets/App.css";
 import Layout from "../../components/layout";
+import SignUp from "../signUp";
+import "../../assets/App.css";
 
 const AppRoutes = () => (
   <Routes>
@@ -26,6 +27,7 @@ const AppRoutes = () => (
     <Route path="/my-orders/:id" element={<MyOrder />} />
     <Route path="/my-orders" element={<MyOrders />} />
     <Route path="/signIn" element={<SignIn />} />
+    <Route path="/signUp" element={<SignUp />} />
     <Route path="/*" element={<NotFound />} />
   </Routes>
 );
