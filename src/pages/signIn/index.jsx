@@ -5,8 +5,8 @@ import SignInImg from '../../../public/signInImg.jpg'
 function SignIn() {
   return (
     <Layout>
-      <div className='shadow-md'>
-        <div className='bg-gray-100 flex justify-center items-center h-[500px] rounded-lg'>
+      <div className='shadow-md h-[400px]'>
+        <div className='bg-gray-100 flex justify-center items-center h-full rounded-lg'>
           <div className='w-1/2 h-full hidden lg:block rounded-l-lg aspect-video'>
             <img
               src={SignInImg}
@@ -14,7 +14,7 @@ function SignIn() {
               className='object-cover w-full h-full rounded-l-lg'
             />
           </div>
-          <div className='lg:py-10 lg:px-16 sm:py-8 sm:px-32 p-8 w-full lg:w-1/2'>
+          <div className='lg:py-10 lg:px-8 sm:py-8 sm:px-32 p-8 w-full h-full lg:w-1/2'>
             <h1 className='text-2xl font-semibold mb-8'>Sign In</h1>
             <form action='#' method=''>
               <div className='mb-4'>
