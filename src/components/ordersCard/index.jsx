@@ -1,5 +1,4 @@
 import {CalendarDaysIcon } from '@heroicons/react/24/solid'
-import { CurrencyDollarIcon } from '@heroicons/react/24/outline'
 import {ShoppingCartIcon} from '@heroicons/react/24/outline'
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 

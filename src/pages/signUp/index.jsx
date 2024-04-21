@@ -1,8 +1,55 @@
 import Layout from "../../components/layout";
 import { Link } from "react-router-dom";
 import { ArrowLongLeftIcon } from "@heroicons/react/16/solid";
+import { useState } from "react";
+
 
 function SignUp() {
+
+  let min = 10000;
+  let max = 99990;
+
+  let randomId = Math.floor(Math.random()* (max-min+1) +min)
+
+  const [formData, setFormData] = useState({
+    userName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    id: randomId
+  });
+  const user = JSON.parse(localStorage.getItem("user")) || []
+
+//obtener los valores de los inputs
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  
+  //manda los datos obtenidos al localStorage
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const newUSer = { ...formData };
+    const updateUser = [...user, newUSer];
+
+    if(newUSer.password === newUSer.confirmPassword){
+      localStorage.setItem("user", JSON.stringify(updateUser));
+      alert("Registered user")
+      window.location.href = "/";
+    } else{
+      alert("Passwords do not match")
+    }
+
+
+  };
+
+
+
   return (
     <Layout>
       <div className=" bg-neutral-200 flex flex-col justify-center items-center p-8 md:p-10 font-light rounded-lg shadow-md">
@@ -17,39 +64,50 @@ function SignUp() {
             <label htmlFor="userName">userName</label>
             <input
               type="text"
-              required
               name="userName"
               className="border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-gray-800 mb-0 sm:mb-2"
+              id="userName"
+              value={formData.name}
+              onChange={handleInputChange}
             />
-            <label htmlFor="Email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
-              type="emal"
-              required
-              name="Email"
+              type="text"
+              name="email"
               className="border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-gray-800"
+              id="email"
+              value={formData.email}
+              onChange={handleInputChange}
             />
           </div>
           <div className="flex flex-col">
             <label htmlFor="password">password</label>
             <input
               type="password"
-              required
               name="password"
               className="border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-gray-800 mb-0 sm:mb-2"
+              id="password"
+              value={formData.password}
+              onChange={handleInputChange}
             />
             <label htmlFor="confirmPassword">Confirm password</label>
             <input
               type="password"
-              required
               name="confirmPassword"
               className="border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-gray-800"
+              id="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
             />
           </div>
         </form>
-        <div className="mt-8 text-white text-center">
-          <Link to="/" className="h-6 w-6 bg-neutral-950 p-2 px-6 rounded-lg hover:bg-neutral-800">
+        <div className="mt-8 text-white text-center w-full">
+          <button 
+          type="submit" 
+          className="h-8 w-20 bg-neutral-950  rounded-lg hover:bg-neutral-800 text-center "
+          onClick={handleSubmit}>
             Register
-          </Link>
+          </button>
         </div>
       </div>
     </Layout>
