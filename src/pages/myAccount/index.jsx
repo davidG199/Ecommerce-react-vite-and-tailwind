@@ -11,7 +11,7 @@ function MyAccount() {
 
   return (
     <Layout>
-      <div className="w-[500px] text-center bg-slate-50 p-5 rounded-lg">
+      <div className="w-[500px] text-center bg-slate-50 p-5 rounded-lg shadow-lg">
         <h1 className=" font-bold text-xl text-center">My account</h1>
         <div className="grid grid-cols-2 grid-rows-2 gap-5 my-5">
           <div className="flex flex-col">

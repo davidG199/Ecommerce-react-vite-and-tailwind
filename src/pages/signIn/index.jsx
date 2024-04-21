@@ -11,7 +11,7 @@ function SignIn() {
             <img
               src={SignInImg}
               alt='img-signIn'
-              className='object-cover w-full h-full rounded-l-lg'
+              className='object-cover w-full h-full rounded-l-lg opacity-95'
             />
           </div>
           <div className='lg:py-10 lg:px-8 sm:py-8 sm:px-32 p-8 w-full h-full lg:w-1/2'>

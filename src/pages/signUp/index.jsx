@@ -40,7 +40,7 @@ function SignUp() {
     if(newUSer.password === newUSer.confirmPassword){
       localStorage.setItem("user", JSON.stringify(updateUser));
       alert("Registered user")
-      window.location.href = "/";
+      window.location.href = "/signIn";
     } else{
       alert("Passwords do not match")
     }
