@@ -1,8 +1,9 @@
-# React + Vite
+# Ecommerce creado con React - vite - tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es mi primer ecommerce desarrollado con react, se consume la api de platzi para traer los productos al sitio web
 
-Currently, two official plugins are available:
+hace falta organizar el tema de la persistencia de datos usando el localStorage
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tambien pienso crear mi propia API para poder generar todos estos productos para asi crear un ecommerce mas completo
+
+[Link de la pagina](https://peaceful-meerkat-e812e6.netlify.app/)
