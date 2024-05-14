@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Layout from '../../components/layout';
-import SignInImg from '../../../public/signInImg.jpg'
+import SignInImg from '../../../public/signInImg.webp'
 
 function SignIn() {
   return (

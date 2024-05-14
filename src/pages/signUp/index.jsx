@@ -44,11 +44,7 @@ function SignUp() {
     } else{
       alert("Passwords do not match")
     }
-
-
   };
-
-
 
   return (
     <Layout>

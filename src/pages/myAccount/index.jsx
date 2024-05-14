@@ -9,6 +9,11 @@ function MyAccount() {
 
   const context = useContext(ShoppingCartContext)  
 
+  const Logout = () =>{
+    localStorage.removeItem("user")
+    window.location.href = "/"
+  }
+
   return (
     <Layout>
       <div className="w-[500px] text-center bg-slate-50 p-5 rounded-lg shadow-lg">
@@ -31,7 +36,10 @@ function MyAccount() {
             <span className='font-light'>{context.order.length}</span>
           </div>
         </div>
-        <button className='text-center bg-neutral-950 hover:bg-neutral-900 text-white p-2 px-4 rounded-lg'>Logout</button>
+        <button 
+        className='text-center bg-neutral-950 hover:bg-neutral-900 text-white p-2 px-4 rounded-lg'
+        onClick={Logout}
+        >Logout</button>
       </div>
     </Layout>
   );
